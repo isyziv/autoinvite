@@ -1,0 +1,61 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <!-- SITE TITTLE -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Invite To Organization</title>
+
+    <!-- APP CSS STYLE -->
+    <!-- Bootstrap -->
+    <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'css/bootstrap-responsive.css' %}" rel="stylesheet" type="text/css">
+
+    <!-- CUSTOM CSS -->
+    <link href="{% static 'css/custom.css' %}}" rel="stylesheet" type="text/css">
+
+    <!-- BACKGROUND -->
+    <link href="{% static 'css/background_colors/pink.css' %}}" rel="stylesheet" type="text/css">
+
+    <!-- FAVICON -->
+    <link href="{% static 'images/gdg-logo.jpg' %}" rel="app icon">
+
+</head>
+
+<body class="body-wrapper">
+<nav class="navbar main-nav fixed-top navbar-expand-lg large">
+    <div class="container-table">
+        <div class=" vertical-center-row">
+            <div class="text-center col-md-4 col-md-offset-4">
+                <img src="{% static 'images/gdg-logo.jpg' %}" alt="avatar" height='100px' width='100px'>
+                <h1>Get Github Invite To</h1>
+                <h2>DSC Unilag</h2>
+                <form action="add" method="post">
+                    <p>Please enter your GitHub username</p>
+                    <p><label>
+                        <input name="github">
+                    </label></p>
+                    <p>
+                        <button type="submit" value="Add me to organization" style="background-color: grey">Add me to
+                            organization
+                        </button>
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- JAVASCRIPT -->
+
+<script src="{% static 'js/bootstrap.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+
+</body>
+
+</html>
