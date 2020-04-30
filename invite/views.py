@@ -1,8 +1,11 @@
+import sys
+
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.views.generic import TemplateView
 import requests
 from .forms import InviteForm
+from subprocess import run, PIPE
 
 
 # Create your views here.
@@ -16,6 +19,7 @@ class SuccessPage(TemplateView):
 
 def get_name(request, username):
     # if this is a POST request we need to process the form data
+    inp = requests.POST.get('github')
     if request.method == 'POST':
         # create a form instance and populate it with data from the request:
         form = InviteForm(request.POST)
@@ -99,3 +103,14 @@ def add_to_org(username):
             return main['message']
     else:
         return 'User not found. Please check your spelling'
+
+
+def output(request):
+    inp = request.POST.get('github')
+    out = run([sys.executable, 'C:/Users/USER/Desktop/autoinvite/somescript.py', inp], shell=False, stdout=PIPE)
+    print(out.stdout)
+
+    if out.stdout == r"b'User not found. Please check your spelling\r\n'":
+        return render(request, "index.html", {'data': out.stdout})
+    else:
+        return render(request, "index.html", {'data': out.stdout})
