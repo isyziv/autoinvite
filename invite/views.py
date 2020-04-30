@@ -91,11 +91,13 @@ def add_to_org(username):
 
 def output(request):
     inp = request.POST.get('github')
-    out = run([sys.executable, 'C:/Users/USER/Desktop/autoinvite/somescript.py', inp], shell=False, stdout=PIPE)
+    out = run([sys.executable, './somescript.py', inp], shell=False, stdout=PIPE)
     print(out.stdout.decode())
     if out.stdout.decode() == "User not found. Please check your spelling\r\n":
         return render(request, "error.html", {'data': inp})
     elif out.stdout.decode() == "You cannot demote yourself. Admins must be demoted by another admin.\r\n":
         return render(request, "erroradmin.html", {'data': inp})
-    else:
+    elif out.stdout.decode() == "OK, Check your EMAIL\r\n":
         return render(request, "success.html", {'data': inp})
+    else:
+        return render(request, "erroroccur.html")
