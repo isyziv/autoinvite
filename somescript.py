@@ -83,7 +83,7 @@ def get_org_id(org_name):
 def add_to_org(username):
     url = 'https://api.github.com/orgs/gdgikorodu/memberships/' + username + '?role=member'
     if user_exists(username):
-        r = requests.put(url, headers={'Authorization': 'Bearer %s' % '39fb57190b3650777c30738f57cd7a1f50cba34c'})
+        r = requests.put(url, headers={'Authorization': 'Bearer %s' % '98ee4ff00c0bacd6bc5fe8c1462247153a6a8723'})
         main = r.json()
         if 'state' in main and main['state'] == 'pending':
             return "OK, Check your EMAIL"

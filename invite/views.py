@@ -21,26 +21,6 @@ class ErrorPage(TemplateView):
     template_name = 'error.html'
 
 
-def get_name(request, username):
-    # if this is a POST request we need to process the form data
-    inp = requests.POST.get('github')
-    if request.method == 'POST':
-        # create a form instance and populate it with data from the request:
-        form = InviteForm(request.POST)
-        # check whether it's valid:
-        if form.is_valid():
-            # process the data in form.cleaned_data as required
-            add_to_org(username)
-            # redirect to a new URL:
-            return HttpResponseRedirect('/add')
-
-    # if a GET (or any other method) we'll create a blank form
-    else:
-        form = InviteForm()
-
-    return render(request, 'index.html', {'form': form})
-
-
 # def add(request):
 #     url = 'https://api.github.com/orgs/gdgikorodu/memberships/geektutor'
 #     r = requests.get(url, headers={'Authorization': 'Bearer %s' % 'ed4daa9aa17780a960297976ee8bdbb82f54a390'})
@@ -112,13 +92,10 @@ def add_to_org(username):
 def output(request):
     inp = request.POST.get('github')
     out = run([sys.executable, 'C:/Users/USER/Desktop/autoinvite/somescript.py', inp], shell=False, stdout=PIPE)
-    print(out)
-    if "User not found. Please check your spelling" in out.stdout:
-        print(True)
-    else:
-        print(False)
-
-    if out.stdout == r"b'User not found. Please check your spelling\r\n'":
+    print(out.stdout.decode())
+    if out.stdout.decode() == "User not found. Please check your spelling\r\n":
         return render(request, "error.html", {'data': inp})
+    elif out.stdout.decode() == "You cannot demote yourself. Admins must be demoted by another admin.\r\n":
+        return render(request, "erroradmin.html", {'data': inp})
     else:
         return render(request, "success.html", {'data': inp})

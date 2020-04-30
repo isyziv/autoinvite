@@ -20,6 +20,6 @@ urlpatterns = [
     path('', HomePage.as_view(), name='home'),
     path('success', SuccessPage.as_view(), name='success'),
     path('error', ErrorPage.as_view(), name='error'),
-    path('output', output, name='success'),
+    path('output', output, name='output'),
     # path('add/', add_to_org(), name='invite'),
 ]

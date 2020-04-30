@@ -39,8 +39,9 @@
         <div class="col-sm-6 col-sm-offset-3">
             <br><br>
             <h2 style="color:red">Failed</h2>
-            <img src="{% static 'images/gdg-logo.jpg' %}" alt="success image" height='100px' width='100px'>
-            <h3>Dear, User</h3>
+{#            <img src="{% static 'images/gdg-logo.jpg' %}" alt="success image" height='100px' width='100px'>#}
+            <span style="color: red">&#9747;</span>
+            <h3>Dear, {{ data }}</h3>
             <p style="font-size:20px;color:#5C5C5C;">
                 User {{ data }} not found. Please check your spelling.</p>
             <a href="/" class="btn btn-success">Thanks</a>
