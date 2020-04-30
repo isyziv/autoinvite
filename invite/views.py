@@ -17,6 +17,10 @@ class SuccessPage(TemplateView):
     template_name = 'success.html'
 
 
+class ErrorPage(TemplateView):
+    template_name = 'error.html'
+
+
 def get_name(request, username):
     # if this is a POST request we need to process the form data
     inp = requests.POST.get('github')
@@ -108,9 +112,13 @@ def add_to_org(username):
 def output(request):
     inp = request.POST.get('github')
     out = run([sys.executable, 'C:/Users/USER/Desktop/autoinvite/somescript.py', inp], shell=False, stdout=PIPE)
-    print(out.stdout)
+    print(out)
+    if "User not found. Please check your spelling" in out.stdout:
+        print(True)
+    else:
+        print(False)
 
     if out.stdout == r"b'User not found. Please check your spelling\r\n'":
-        return render(request, "index.html", {'data': out.stdout})
+        return render(request, "error.html", {'data': inp})
     else:
-        return render(request, "index.html", {'data': out.stdout})
+        return render(request, "success.html", {'data': inp})
