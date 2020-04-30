@@ -1,0 +1,53 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+    <!-- SITE TITTLE -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Error</title>
+
+    <!-- APP CSS STYLE -->
+    <!-- Bootstrap -->
+    <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'css/bootstrap-responsive.css' %}" rel="stylesheet" type="text/css">
+
+    <!-- CUSTOM CSS -->
+    <link href="{% static 'css/custom.css' %}" rel="stylesheet" type="text/css">
+
+    <!-- BACKGROUND -->
+    <link href="{% static 'css/background_colors/pink.css' %}" rel="stylesheet" type="text/css">
+
+    <!-- FAVICON -->
+    <link href="{% static 'images/gdg-logo.jpg' %}" rel="app icon">
+    <!------ Include the above in your HEAD tag ---------->
+</head>
+
+<a href="https://github.com/Mastersam07/autoinvite"><img
+        src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub"
+        style="position: absolute; top: 0; right: 0; border: 0;"></a>
+<div class="container">
+    <div class="row text-center">
+        <div class="col-sm-6 col-sm-offset-3">
+            <br><br>
+            <h2 style="color:red">Failed</h2>
+            <img src="{% static 'images/gdg-logo.jpg' %}" alt="success image" height='100px' width='100px'>
+            <h3>Dear, User</h3>
+            <p style="font-size:20px;color:#5C5C5C;">
+                User {{ data }} not found. Please check your spelling.</p>
+            <a href="/" class="btn btn-success">Thanks</a>
+            <br><br>
+        </div>
+
+    </div>
+</div>
+
+</html>
