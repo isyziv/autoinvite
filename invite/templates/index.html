@@ -36,13 +36,13 @@
                 <img src="{% static 'images/gdg-logo.jpg' %}" alt="avatar" height='100px' width='100px'>
                 <h1>Get Github Invite To</h1>
                 <h2>DSC Unilag</h2>
-                <form action="add" method="post">{% csrf_token %}
+                <form action="." method="post">{% csrf_token %}
                     <p>Please enter your GitHub username</p>
-                    <p><label>
-                        <input name="github" placeholder="Github username">
+                    <p><label for="username">
+                        <input name="github" placeholder="Github username" value="{{ username }}" maxlength="100" required>
                     </label></p>
                     <p>
-                        <button type="submit" value="Add me to organization" style="background-color: grey">Add me to
+                        <button type="submit" value="Add me to organization" style="background-color: ghostwhite" >Add me to
                             organization
                         </button>
                     </p>

@@ -1,11 +1,36 @@
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.views.generic import TemplateView
 import requests
+from .forms import InviteForm
 
 
 # Create your views here.
 class HomePage(TemplateView):
     template_name = 'index.html'
+
+
+class SuccessPage(TemplateView):
+    template_name = 'success.html'
+
+
+def get_name(request, username):
+    # if this is a POST request we need to process the form data
+    if request.method == 'POST':
+        # create a form instance and populate it with data from the request:
+        form = InviteForm(request.POST)
+        # check whether it's valid:
+        if form.is_valid():
+            # process the data in form.cleaned_data as required
+            add_to_org(username)
+            # redirect to a new URL:
+            return HttpResponseRedirect('/add')
+
+    # if a GET (or any other method) we'll create a blank form
+    else:
+        form = InviteForm()
+
+    return render(request, 'index.html', {'form': form})
 
 
 # def add(request):
@@ -63,9 +88,9 @@ def get_org_id(org_name):
 
 
 # adding user to organization
-def add_to_org():
-    url = 'https://api.github.com/orgs/gdgikorodu/memberships/' + 'geektutor' + '?role=member'
-    if user_exists('geektutor'):
+def add_to_org(username):
+    url = 'https://api.github.com/orgs/gdgikorodu/memberships/' + username + '?role=member'
+    if user_exists(username):
         r = requests.put(url, headers={'Authorization': 'Bearer %s' % 'ed4daa9aa17780a960297976ee8bdbb82f54a390'})
         main = r.json()
         if 'state' in main and main['state'] == 'pending':
