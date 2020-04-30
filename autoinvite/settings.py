@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/2.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.1/ref/settings/
 """
-
+from decouple import config
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -19,7 +19,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'j1hs0ow0a=z5ahjfig3kg4z2065xv$!ty9m%izc5gegbwlc)n1'
+SECRET_KEY = config('SECRET_KEY', default='')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -116,11 +116,5 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 APPEND_SLASH = False
-
-from decouple import config
-
-# other settings... SECRET_KEY, DEBUG, INSTALLED_APPS etc etc
-
-# at the bottom of the settings.py file:
 
 GITHUB_TOKEN = config('GITHUB_TOKEN', default='')
