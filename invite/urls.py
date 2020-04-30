@@ -14,8 +14,9 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.urls import path
-from . import views
+from invite.views import add_to_org, HomePage
 
 urlpatterns = [
-    path('', views.HomePage.as_view(), name='home'),
+    path('', HomePage.as_view(), name='home'),
+    # path('add/', add_to_org(), name='invite'),
 ]
