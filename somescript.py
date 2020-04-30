@@ -3,6 +3,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render
 import sys
 
+from autoinvite import settings
 from invite.forms import InviteForm
 
 
@@ -83,7 +84,7 @@ def get_org_id(org_name):
 def add_to_org(username):
     url = 'https://api.github.com/orgs/gdgikorodu/memberships/' + username + '?role=member'
     if user_exists(username):
-        r = requests.put(url, headers={'Authorization': 'Bearer %s' % '98ee4ff00c0bacd6bc5fe8c1462247153a6a8723'})
+        r = requests.put(url, headers={'Authorization': 'Bearer %s' % settings.GITHUB_TOKEN})
         main = r.json()
         if 'state' in main and main['state'] == 'pending':
             return "OK, Check your EMAIL"

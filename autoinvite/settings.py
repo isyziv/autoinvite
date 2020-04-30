@@ -116,3 +116,11 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 APPEND_SLASH = False
+
+from decouple import config
+
+# other settings... SECRET_KEY, DEBUG, INSTALLED_APPS etc etc
+
+# at the bottom of the settings.py file:
+
+GITHUB_TOKEN = config('GITHUB_TOKEN', default='')
