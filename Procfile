@@ -1,1 +1,1 @@
-  web: gunicorn autoinvite.wsgi --log-file -
+web: gunicorn autoinvite.wsgi --log-file -
