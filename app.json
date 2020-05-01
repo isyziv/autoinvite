@@ -7,7 +7,7 @@
   "env": {
     "DISABLE_COLLECTSTATIC":"1",
     "APPLICATION_NAME": {
-      "description": "Ensure this corresponds with the app name",
+      "description": "Ensure this corresponds with the {app name}.herokuapp.com",
       "value": null
     },
     "GITHUB_TOKEN": {

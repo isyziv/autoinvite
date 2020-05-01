@@ -1,12 +1,8 @@
 import sys
-
-from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.views.generic import TemplateView
 import requests
-from .forms import InviteForm
 from subprocess import run, PIPE
-from boto.s3.connection import S3Connection
 
 
 # Create your views here.
