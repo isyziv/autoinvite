@@ -6,6 +6,10 @@
   "keywords": ["github", "automation", "github organization", "invite"],
   "env": {
     "DISABLE_COLLECTSTATIC":"1",
+    "APPLICATION_NAME": {
+      "description": "Ensure this corresponds with the app name",
+      "value": null
+    },
     "GITHUB_TOKEN": {
       "description": "A Github access token to use the application",
       "value": null

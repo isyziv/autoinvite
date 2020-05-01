@@ -24,7 +24,7 @@ SECRET_KEY = 'j1hs0ow0a=z5ahjfig3kg4z2065xv$!ty9m%izc5gegbwlc)n1'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [os.environ['HEROKU_APP_NAME']]
+ALLOWED_HOSTS = [os.environ['APPLICATION_NAME']]
 
 # Application definition
 
