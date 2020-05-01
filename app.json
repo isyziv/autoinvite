@@ -6,7 +6,7 @@
   "keywords": ["github", "automation", "github organization", "invite"],
   "env": {
     "GITHUB_TOKEN": {
-      "description": "A Github access token to activate the Octokit Github Client",
+      "description": "A Github access token to use the application",
       "value": null
     },
     "ORGANIZATION_NAME": {
