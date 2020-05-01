@@ -14,9 +14,5 @@
       "description": "You can confirm it by going to your org's dashboard. The URL will be: https://github.com/orgs/{ORGANIZATION_NAME}/dashboard",
       "value": null
     },
-    "BACKGROUND_COLOR": {
-      "description": "Background color for front page. Can be one of [grey, white, blue, green, red, pink]",
-      "value": null
-    }
   }
 }
