@@ -1,6 +1,5 @@
 import os
 import sys
-
 from decouple import config
 from django.shortcuts import render
 from django.views.generic import TemplateView
@@ -12,7 +11,7 @@ from subprocess import run, PIPE
 def HomePage(request):
     # template_name = 'index.html'
     ORGANIZATION_NAME = os.environ['ORGANIZATION_NAME']
-    someinp = config('ORGANIZATION_NAME', default='')
+    # someinp = config('ORGANIZATION_NAME', default='')
     return render(request, 'index.html', {'newdata': ORGANIZATION_NAME})
 
 
@@ -95,12 +94,11 @@ def add_to_org(username):
 def output(request):
     inp = request.POST.get('github')
     out = run([sys.executable, './somescript.py', inp], shell=False, stdout=PIPE)
-    print(out.stdout.decode())
-    if out.stdout.decode() == "User not found. Please check your spelling\r\n":
+    if out.stdout == b'User not found. Please check your spelling\r\n':
         return render(request, "error.html", {'data': inp})
-    elif out.stdout.decode() == "You cannot demote yourself. Admins must be demoted by another admin.\r\n":
+    elif out.stdout == b'You cannot demote yourself. Admins must be demoted by another admin.\r\n':
         return render(request, "erroradmin.html", {'data': inp})
-    elif out.stdout.decode() == "OK, Check your EMAIL\r\n":
+    elif out.stdout == b'OK, Check your EMAIL\r\n':
         return render(request, "success.html", {'data': inp})
     else:
         return render(request, "erroroccur.html")

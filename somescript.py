@@ -1,10 +1,6 @@
 import os
-
 import requests
 import sys
-from boto.s3.connection import S3Connection
-
-from autoinvite import settings
 
 
 # check if user exists
@@ -54,7 +50,9 @@ def get_org_id(org_name):
 # adding user to organization
 def add_to_org(username):
     GITHUB_TOKEN = os.environ['GITHUB_TOKEN']
+    # GITHUB_TOKEN = config('GITHUB_TOKEN', default='')
     ORGANIZATION_NAME = os.environ['ORGANIZATION_NAME']
+    # ORGANIZATION_NAME = config('ORGANIZATION_NAME', default='')
     url = 'https://api.github.com/orgs/' + ORGANIZATION_NAME + '/memberships/' + username + '?role=member'
     if user_exists(username):
         r = requests.put(url, headers={'Authorization': 'Bearer %s' % GITHUB_TOKEN})
@@ -68,4 +66,5 @@ def add_to_org(username):
 
 
 output = add_to_org(sys.argv[1])
+# print(sys.argv[1])
 print(output)
