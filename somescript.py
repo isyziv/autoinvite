@@ -1,5 +1,8 @@
+import os
+
 import requests
 import sys
+from boto.s3.connection import S3Connection
 
 from autoinvite import settings
 
@@ -50,9 +53,11 @@ def get_org_id(org_name):
 
 # adding user to organization
 def add_to_org(username):
-    url = 'https://api.github.com/orgs/gdgikorodu/memberships/' + username + '?role=member'
+    GITHUB_TOKEN = os.environ['GITHUB_TOKEN']
+    ORGANIZATION_NAME = os.environ['ORGANIZATION_NAME']
+    url = 'https://api.github.com/orgs/' + ORGANIZATION_NAME + '/memberships/' + username + '?role=member'
     if user_exists(username):
-        r = requests.put(url, headers={'Authorization': 'Bearer %s' % settings.GITHUB_TOKEN})
+        r = requests.put(url, headers={'Authorization': 'Bearer %s' % GITHUB_TOKEN})
         main = r.json()
         if 'state' in main and main['state'] == 'pending':
             return "OK, Check your EMAIL"
