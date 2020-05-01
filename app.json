@@ -1,0 +1,21 @@
+{
+  "name": "Automated Github Org Invites",
+  "description": "Out-of-the-box solution to automatic Github Organization invitations",
+  "repository": "https://github.com/Mastersam07/autoinvite",
+  "logo": "https://avatars3.githubusercontent.com/u/31275429?s=460&u=b935d608a06c1604bae1d971e69a731480a27d46&v=4",
+  "keywords": ["github", "automation", "github organization", "invite"],
+  "env": {
+    "GITHUB_TOKEN": {
+      "description": "A Github access token to activate the Octokit Github Client",
+      "value": null
+    },
+    "ORGANIZATION_NAME": {
+      "description": "You can confirm it by going to your org's dashboard. The URL will be: https://github.com/orgs/{ORGANIZATION_NAME}/dashboard",
+      "value": null
+    },
+    "BACKGROUND_COLOR": {
+      "description": "Background color for front page. Can be one of [grey, white, blue, green, red, pink]",
+      "value": null
+    }
+  }
+}
