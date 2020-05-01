@@ -17,7 +17,7 @@ from django.urls import path
 from invite.views import HomePage, SuccessPage, output, ErrorPage
 
 urlpatterns = [
-    path('', HomePage.as_view(), name='home'),
+    path('', HomePage, name='home'),
     path('success', SuccessPage.as_view(), name='success'),
     path('error', ErrorPage.as_view(), name='error'),
     path('output', output, name='output'),

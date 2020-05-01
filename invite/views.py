@@ -1,4 +1,7 @@
+import os
 import sys
+
+from decouple import config
 from django.shortcuts import render
 from django.views.generic import TemplateView
 import requests
@@ -6,8 +9,11 @@ from subprocess import run, PIPE
 
 
 # Create your views here.
-class HomePage(TemplateView):
-    template_name = 'index.html'
+def HomePage(request):
+    # template_name = 'index.html'
+    ORGANIZATION_NAME = os.environ['ORGANIZATION_NAME']
+    someinp = config('ORGANIZATION_NAME', default='')
+    return render(request, 'index.html', {'newdata': ORGANIZATION_NAME})
 
 
 class SuccessPage(TemplateView):
