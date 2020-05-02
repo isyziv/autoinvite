@@ -93,7 +93,7 @@ def add_to_org(username):
 
 def output(request):
     inp = request.POST.get('github')
-    out = run([sys.executable, './somescript.py', inp], shell=False, stdout=PIPE)
+    out = run([sys.executable, '../somescript.py', inp], shell=False, stdout=PIPE)
     if out.stdout == b'User not found. Please check your spelling\r\n':
         return render(request, "error.html", {'data': inp})
     elif out.stdout == b'You cannot demote yourself. Admins must be demoted by another admin.\r\n':
